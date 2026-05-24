@@ -1,0 +1,227 @@
+@import "tailwindcss";
+
+:root {
+  /* === WealthCost Design System === */
+  /* Deep OLED dark foundation */
+  --bg: #05070F;
+  --bg-elevated: #0C0F1A;
+  --bg-surface: #12151F;
+  
+  /* Refined gold & AI accents */
+  --gold: #C5A46E;
+  --gold-light: #D9C49A;
+  --gold-dark: #A68A55;
+  --ai: #00C9B1;
+  --ai-light: #33D9C4;
+  
+  /* Text */
+  --text-primary: #F5F5F7;
+  --text-secondary: #C8CBD4;
+  --text-muted: #8A8F9E;
+  --text-subtle: #5C616E;
+  
+  /* Borders & lines */
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  
+  /* Fonts */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-plex-sans);
+  
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base reset & premium typography */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.15) transparent;
+}
+
+body {
+  font-family: var(--font-geist-sans);
+  background: var(--bg);
+  color: var(--text-primary);
+}
+
+/* Display / Headlines */
+h1, .display {
+  font-family: var(--font-plex-sans);
+  font-feature-settings: "tnum", "lnum";
+}
+
+/* Premium button styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 14px 28px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  border-radius: 9999px;
+  transition: all 0.2s var(--ease-out-expo);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: #05070F;
+  border: 1px solid var(--gold);
+}
+
+.btn-primary:hover {
+  background: var(--gold-light);
+  border-color: var(--gold-light);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 30px -10px rgba(197, 164, 110, 0.3);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+}
+
+.btn-secondary:hover {
+  background: var(--bg-elevated);
+  border-color: var(--border-strong);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  padding: 12px 20px;
+}
+
+.btn-ghost:hover {
+  color: var(--text-primary);
+  background: rgba(255,255,255,0.03);
+}
+
+/* Glass / Elevated surfaces */
+.glass {
+  background: rgba(12, 15, 26, 0.7);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+}
+
+.glass-strong {
+  background: rgba(18, 21, 31, 0.85);
+  backdrop-filter: blur(24px);
+  border: 1px solid var(--border-strong);
+}
+
+/* Section rhythm */
+.section {
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+
+/* 3D Canvas container */
+.canvas-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Subtle gold glow for 3D emphasis */
+.glow-gold {
+  box-shadow: 0 0 60px -10px rgba(197, 164, 110, 0.15);
+}
+
+/* Scroll progress indicator */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 1px;
+  background: linear-gradient(to right, var(--gold), var(--ai));
+  z-index: 100;
+  transition: width 0.05s linear;
+}
+
+/* Premium card */
+.premium-card {
+  transition: transform 0.4s var(--ease-out-expo), 
+              box-shadow 0.4s var(--ease-out-expo),
+              border-color 0.2s ease;
+  border: 1px solid var(--border);
+}
+
+.premium-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-strong);
+  box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.5);
+}
+
+/* Animated underline for links */
+.nav-link {
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.nav-link:after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.3s var(--ease-out-expo);
+}
+
+.nav-link:hover:after {
+  width: 100%;
+}
+
+/* Feature icon container */
+.icon-container {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  transition: all 0.3s var(--ease-out-expo);
+}
+
+.premium-card:hover .icon-container {
+  background: var(--bg-elevated);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* Stats */
+.stat-number {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Divider */
+.divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border), transparent);
+}
+
+/* Reduced motion respect */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
